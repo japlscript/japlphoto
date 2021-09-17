@@ -1,0 +1,64 @@
+name: Deploy
+
+# NOTE
+# secrets.OSSRH_GPG_SECRET_KEY was created with
+#    gpg --export-secret-keys -a <key-id> > secret.txt
+# then all newlines were replaced with literal '\n'
+# see also https://gist.github.com/sualeh/ae78dc16123899d7942bc38baba5203c
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+
+    # Unfortunately, GitHub silently ignores, if we set it to macos-10.14,
+    # which is what we actually want. :-/
+    runs-on: macos-latest
+
+    steps:
+      - id: install-secret-key
+        name: Install gpg secret key
+        run: |
+          gpg --version
+          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG
+      - uses: actions/checkout@v2
+
+      - name: Set up publication to Maven Central
+        uses: actions/setup-java@v1
+        with:
+          java-version: 9
+          architecture: x64
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+
+      - id: publish-to-central
+        name: Publish to Central Repository
+        shell: bash
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+          GPG_TTY: $(tty)
+        # Manipulate TCC, see https://github.com/actions/virtual-environments/issues/553#issuecomment-648109166
+        # in order to allow AppleScript automation of iTunes.app
+        run: |
+          sqlite3 "/Users/runner/Library/Application Support/com.apple.TCC/TCC.db" "insert into access (service, client, client_type, allowed, prompt_count, indirect_object_identifier_type, indirect_object_identifier) values ('kTCCServiceAppleEvents', '/bin/bash', 1, 1, 1, 0, 'com.apple.Photos')"
+          mvn \
+            --no-transfer-progress \
+            --batch-mode \
+            -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} \
+            -P release \
+            clean deploy --file pom.xml
+
+      # deploy javadocs to github pages
+      - name: Deploy Javadocs to GitHub Pages Branch
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: target/apidocs/

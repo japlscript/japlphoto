@@ -1,0 +1,17 @@
+<project default="japlscript">
+    <target name="japlscript">
+        <mkdir dir="${project.build.directory}/generated-sources/main/java"/>
+
+        <taskdef name="japlscript"
+                 classname="com.tagtraum.japlscript.generation.GeneratorAntTask"
+                 classpathref="maven.compile.classpath"/>
+
+        <japlscript application="Photos"
+                    module="tagtraum.japlphoto"
+                    sdef="${basedir}/src/main/japlscript/Photos.sdef"
+                    out="${project.build.directory}/generated-sources/main/java"
+                    packagePrefix="com.tagtraum.macos">
+        </japlscript>
+
+    </target>
+</project>
