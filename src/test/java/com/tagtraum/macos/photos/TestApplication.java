@@ -38,12 +38,6 @@ public class TestApplication {
     }
 
     @Test
-    public void testLibraryPhotoCount() {
-        final Application application = Application.getInstance();
-        System.out.println("Media items: " + application.countMediaItems());
-    }
-
-    @Test
     public void testGetAlbumNames() {
         final Application application = Application.getInstance();
         final Album[] albums = application.getAlbums();
@@ -70,4 +64,11 @@ public class TestApplication {
             }
         }
     }
+
+    @Test
+    public void testLibraryPhotoCount() {
+        final Application application = Application.getInstance();
+        System.out.println("Media items: " + application.countMediaItems());
+    }
+
 }
