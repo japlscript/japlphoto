@@ -48,6 +48,7 @@ public class TestApplication {
     }
 
     @Test
+    @Disabled("Currently disabled due to timeouts")
     public void testLocation() {
         // this is more of a demo than a test
         final Application application = Application.getInstance();
@@ -67,7 +68,7 @@ public class TestApplication {
     }
 
     @Test
-    @Disabled("May take too long/timeout")
+    @Disabled("Currently disabled due to timeouts")
     public void testLibraryPhotoCount() {
         final Application application = Application.getInstance();
         System.out.println("Media items: " + application.countMediaItems());
