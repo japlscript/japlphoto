@@ -6,6 +6,9 @@
  */
 package com.tagtraum.macos.photos;
 
+import com.tagtraum.japlscript.JaplScript;
+import com.tagtraum.japlscript.execution.Timeout;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -19,6 +22,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @author <a href="mailto:hs@tagtraum.com">Hendrik Schreiber</a>
  */
 public class TestApplication {
+
+    @BeforeClass
+    public static void beforeClass() {
+        // Photos can be extra slow to respond.
+        JaplScript.addGlobalAspect(new Timeout(600));
+    }
 
     @Test
     public void testVersion() {
