@@ -9,6 +9,7 @@ package com.tagtraum.macos.photos;
 import com.tagtraum.japlscript.JaplScript;
 import com.tagtraum.japlscript.execution.Timeout;
 import org.junit.BeforeClass;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -66,6 +67,7 @@ public class TestApplication {
     }
 
     @Test
+    @Disabled("May take too long/timeout")
     public void testLibraryPhotoCount() {
         final Application application = Application.getInstance();
         System.out.println("Media items: " + application.countMediaItems());
