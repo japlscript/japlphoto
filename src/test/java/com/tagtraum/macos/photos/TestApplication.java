@@ -39,6 +39,7 @@ public class TestApplication {
     }
 
     @Test
+    @Disabled("Currently disabled due to timeouts")
     public void testGetAlbumNames() {
         final Application application = Application.getInstance();
         final Album[] albums = application.getAlbums();
