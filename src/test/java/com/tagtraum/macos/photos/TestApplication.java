@@ -6,6 +6,10 @@
  */
 package com.tagtraum.macos.photos;
 
+import com.tagtraum.japlscript.JaplScript;
+import com.tagtraum.japlscript.execution.Timeout;
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -20,6 +24,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 public class TestApplication {
 
+    @BeforeClass
+    public static void beforeClass() {
+        // Photos can be extra slow to respond.
+        JaplScript.addGlobalAspect(new Timeout(600));
+    }
+
     @Test
     public void testVersion() {
         final Application application = Application.getInstance();
@@ -29,12 +39,7 @@ public class TestApplication {
     }
 
     @Test
-    public void testLibraryPhotoCount() {
-        final Application application = Application.getInstance();
-        System.out.println("Media items: " + application.countMediaItems());
-    }
-
-    @Test
+    @Disabled("Currently disabled due to timeouts")
     public void testGetAlbumNames() {
         final Application application = Application.getInstance();
         final Album[] albums = application.getAlbums();
@@ -44,6 +49,7 @@ public class TestApplication {
     }
 
     @Test
+    @Disabled("Currently disabled due to timeouts")
     public void testLocation() {
         // this is more of a demo than a test
         final Application application = Application.getInstance();
@@ -61,4 +67,12 @@ public class TestApplication {
             }
         }
     }
+
+    @Test
+    @Disabled("Currently disabled due to timeouts")
+    public void testLibraryPhotoCount() {
+        final Application application = Application.getInstance();
+        System.out.println("Media items: " + application.countMediaItems());
+    }
+
 }
