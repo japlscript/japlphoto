@@ -1,0 +1,4 @@
+tell application "Photos"
+    activate
+    tell application "System Events" to key code 36 #return
+end tell
