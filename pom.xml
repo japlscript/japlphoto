@@ -5,7 +5,7 @@
     <artifactId>japlphoto</artifactId>
     <packaging>jar</packaging>
     <name>Japlphoto</name>
-    <version>0.9.3</version>
+    <version>0.9.4</version>
     <description>Java API for the Apple Photos app (macOS)</description>
     <url>https://github.com/hendriks73/japlphoto</url>
     <inceptionYear>2021</inceptionYear>
@@ -245,7 +245,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <japlscript.version>3.4.7</japlscript.version>
+        <japlscript.version>3.4.8</japlscript.version>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
     </properties>
 
