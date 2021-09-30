@@ -1,1 +1,0 @@
-typeSearchIndex = [{"p":"com.tagtraum.macos.photos","l":"Album"},{"p":"com.tagtraum.macos.photos","l":"Application"},{"p":"com.tagtraum.macos.photos","l":"Container"},{"p":"com.tagtraum.macos.photos","l":"Folder"},{"p":"com.tagtraum.macos.photos","l":"MediaItem"},{"p":"com.tagtraum.macos.photos","l":"Moment"}]

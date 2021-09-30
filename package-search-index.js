@@ -1,1 +1,0 @@
-packageSearchIndex = [{"m":"tagtraum.japlphoto","l":"com.tagtraum.macos.photos"}]
