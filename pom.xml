@@ -5,7 +5,7 @@
     <artifactId>japlphoto</artifactId>
     <packaging>jar</packaging>
     <name>Japlphoto</name>
-    <version>0.9.5-SNAPSHOT</version>
+    <version>0.9.6-SNAPSHOT</version>
     <description>Java API for the Apple Photos app (macOS)</description>
     <url>https://github.com/japlscript/japlphoto</url>
     <inceptionYear>2021</inceptionYear>
