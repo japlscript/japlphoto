@@ -1,7 +1,7 @@
 - 0.9.5
 
-  - Moved GitHub repository to https://github.com/japlscript/japlphoto 
-
+  - Moved GitHub repository to https://github.com/japlscript/japlphoto
+  - Moved to JaplScript 3.4.11
  
 - 0.9.4
 
